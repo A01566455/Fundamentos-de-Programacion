@@ -1,0 +1,580 @@
+#include <iostream>
+#include <math.h>
+#include <limits.h>
+using namespace std;
+
+//✍🏼Análisis:
+// Datos de entrada: ⏩
+//			iN - parámetro de entrada
+// Datos de salida: ⏪
+//			Sumatoria 1+ 2 + 3 + ..iN resultado iSumatoria 
+// Procesos: 📝
+//  	Tipo de ciclo - Contador Creciente 1..iN ✍🏼 iK = 1, iK <= iN, iK = iK + 1
+//  	Acumulador: iSumatoria = 0 
+//		Calcular la suma de 1+ 2 + 3 + ..iN
+void sumatoria(int iN){
+	// Declaración de variables
+	int iK, iSumatoria;
+	
+	//Inicializar las variables
+	iK = 1;
+	iSumatoria = 0;
+	
+	//Inicio del ciclo
+	while (iK <= iN)
+	{
+	  cout << "Hoy te corresponde ahorrar $" << iK << " dolares." << endl;
+	  iSumatoria = iSumatoria + iK;
+	  iK = iK + 1;
+	}
+	cout << "Total = $" << iSumatoria;
+}
+
+//✍🏼Análisis:
+// Datos de entrada: ⏩
+//			iN - parámetro de entrada
+//      Leer iV dentro del ciclo
+// Datos de salida: ⏪
+//Si iN >= 1
+//			Cantidad de Positivos
+//      Cantidad de Negativos
+//      Cantidad de Ceros
+//Sino
+//      No se procesaron valores
+// Procesos: 📝
+//  	Tipo de ciclo - Contador Creciente
+//  	Contador:
+//    iCP = 0 iCN = 0 iCC = 0
+//    Contar cantidad de P, N, C.
+void cuentaPNC(int iN){
+  
+  //Declaracion de variables
+  int iCP, iCN, iCC, iV, iK;
+  
+  if (iN >= 1)
+  {
+    iCP = 0;
+    iCN = 0;
+    iCC = 0;
+    iK = 1;
+    
+    while (iK <= iN)
+    {
+      cout << "Teclea el #" << iK << endl;
+      cin >> iV;
+      if (iV == 0)
+          iCC = iCC + 1;
+      if (iV > 0)
+          iCP = iCP + 1;
+      if (iV < 0)
+          iCN = iCN + 1;
+      
+      iK = iK + 1;
+    }
+    cout << "La cantidad de positivos es = " << iCP << endl;
+    cout << "La cantidad de negativos es = " << iCN << endl;
+    cout << "La cantidad de ceros = " << iCC << endl;
+  }
+  else
+  cout << "No se procesaron valores: ERROR";
+  
+}
+
+void tablaMultiplicar(int iN){
+  
+  //Declaracion de variables
+  int iK;
+  
+  iK = 10;
+  
+  while (iK >= 1)
+  {
+    cout << iN << "X" << iK << "= " << (iN * iK) << endl;
+    iK = iK - 1;
+  }
+}
+
+void promedio(int iN){
+  
+  //Declaracion de variables
+  int iK, iV, iSumatoria;
+  
+  if (iN > 0)
+  {
+    //Inicializar 
+    iK = 1;
+    iSumatoria = 0;
+    
+    //Ciclo
+    while (iK <= iN)
+    {
+      cout << "Ingresa el valor #" << iK << ":" << endl;
+      cin >> iV;
+      iSumatoria = iSumatoria + iV;
+      iK = iK + 1;
+    }
+    cout << "El promedio = " << (double) iSumatoria / iN << endl;
+    
+    
+  }
+  else 
+  cout << "No se procesaron valores: ERROR";
+}
+//✍🏼Análisis:MAYOR Y MENOR
+// Datos de entrada: ⏩
+//			iN - parámetro de entrada
+//      Leer iV dentro del ciclo
+// Datos de salida: ⏪
+//Si iN > 0
+//			El valor mayor de los iN valores que tecleo el usuario
+//Sino
+//      No se procesaron valores
+// Procesos: 📝
+//  	Tipo de ciclo - Contador Creciente
+//  	
+// Guardar el iMayor de los iV leidos.
+void mayor (int iN){
+  
+  //Declaracion de variables
+  int iK, iV, iMayor;
+  
+  //Comprobar que se van a procesar valores
+  if (iN > 0)
+  {
+    //Inicializar
+    iK = 1;
+    iMayor = INT_MIN;
+    
+    //Ciclo Creciente
+    while (iK <= iN)
+    {
+      cout << "Ingresa el valor #" << iK << ":" << endl;
+      cin >> iV;
+      
+      //Comprobar el mayor
+      if (iV > iMayor)
+      {
+        iMayor = iV;
+      }
+      iK = iK + 1;
+    }
+    cout << "El mayor = " << iMayor;
+  }
+  else
+    cout << "No se procesaron valores: ERROR";
+}
+
+void menor (int iN){
+  
+  //Declaracion de variables
+  int iK, iV, iMenor;
+  
+  //Comprobar que se van a procesar valores
+  if (iN > 0)
+  {
+    //Inicializar
+    iK = 1;
+    iMenor = INT_MAX;
+    
+    //Ciclo Creciente
+    while (iK <= iN)
+    {
+      cout << "Ingresa el valor #" << iK << ":" << endl;
+      cin >> iV;
+      
+      //Comprobar el menor
+      if (iV < iMenor)
+      {
+        iMenor = iV;
+      }
+      iK = iK + 1;
+    }
+    cout << "El menor = " << iMenor;
+  }
+  else
+    cout << "No se procesaron valores: ERROR";
+}
+
+void menorMayorPromedio(int iN){
+  
+  //Declaracion de variables
+  int iK, iV, iMenor, iMayor, iSumatoria;
+  
+  //Comprobar que se van a procesar valores
+  if (iN > 0)
+  {
+    //Inicializar
+    iK = 1;
+    iMenor = INT_MAX;
+    iMayor = INT_MIN;
+    iSumatoria = 0;
+    
+    
+    //Ciclo Creciente
+    while (iK <= iN)
+    {
+      cout << "Ingresa el valor #" << iK << ":" << endl;
+      cin >> iV;
+      
+      //Comprobar el menor
+      if (iV < iMenor)
+      {
+        iMenor = iV;
+      }
+      if (iV > iMayor)
+      {
+        iMayor = iV;
+      }
+      iSumatoria = iSumatoria + iV;
+      iK = iK + 1;
+    }
+    cout << "El menor = " << iMenor << endl;
+    cout << "El mayor = " << iMayor << endl;
+    cout << "El promedio = " << (double) iSumatoria / iN << endl;
+    
+  }
+  else
+    cout << "No se procesaron valores: ERROR";
+}
+
+void mayorCentinela(int iN){
+  
+  //Declaracion de variables
+  int iV, iMayor;
+  
+  //Leer la VCC antes del Ciclo
+  cout << "Teclea un valor, Para terminar ingresa <0>:";
+  cin >> iV;
+  
+  if (iV == 0)
+  cout << "No se procesaron valores: ERROR";
+  else
+  {
+    iMayor = INT_MIN;
+    
+    while (iV != 0)
+    {
+      if (iV > iMayor)
+        iMayor = iV;
+      
+      cout << "Teclea un valor, Para terminar ingresa <0>:";
+      cin >> iV;
+    }
+    cout << "El mayor = " << iMayor << endl;
+  }
+}
+
+void menorCentinela(int iN){
+  
+  //Declaracion de variables
+  int iV, iMenor;
+  
+  //Leer la VCC antes del Ciclo
+  cout << "Teclea un valor, Para terminar ingresa <0>:";
+  cin >> iV;
+  
+  if (iV == 0)
+  cout << "No se procesaron valores: ERROR";
+  else
+  {
+    iMenor = INT_MAX;
+    
+    while (iV != 0)
+    {
+      if (iV < iMenor)
+        iMenor = iV;
+      
+      cout << "Teclea un valor, Para terminar ingresa <0>:";
+      cin >> iV;
+    }
+    cout << "El menor = " << iMenor << endl;
+  }
+}
+
+void promedioCentinela(int iN){
+  
+  //Declaracion de variables
+  int iV, iSumatoria;
+  
+  //Leer la VCC antes del Ciclo
+  cout << "Teclea un valor, Para terminar ingresa <0>:";
+  cin >> iV;
+  
+  if (iV > 0)
+  {
+    //Inicializar 
+    iSumatoria = 0;
+    
+    //Ciclo
+    while (iV != 0)
+    {
+      iSumatoria = iSumatoria + iV;
+      cout << "Teclea un valor, Para terminar ingresa <0>:";
+      cin >> iV;
+    }
+    cout << "El promedio = " << (double) iSumatoria / iN << endl;
+    
+    
+  }
+  else 
+  cout << "No se procesaron valores: ERROR";
+}
+
+//✍🏼Análisis:
+// Datos de entrada: ⏩
+//			iN - parámetro de entrada
+// Datos de salida: ⏪
+//			si iN > 0
+//      Desplegar la aproximacion de Pi
+//    Sino
+//      desplegar valor inadecuado
+// Procesos: 📝
+//  	Tipo de ciclo - Contador Creciente 1..iN ✍🏼 iK = 1, iK <= iN, iK = iK + 1
+//  	Acumulador:
+//		dPi = (1/1 - 1/3 + 1/5 - 1/7 + ...)
+//    Al salir del ciclo multiplicar dPi * 4
+//    iD = contador que incrementa de dos en dos.
+double diaPi(int iN){
+  
+  //Declaracion de variables 
+  int iK, iD;
+  double dPi;
+  
+  //Validacion
+  if (iN > 0)
+  {
+    iK = 1;
+    iD = 1;
+    dPi = 0;
+    
+    //Ciclo Contador Creciente
+    while (iK <= iN)
+    {
+      if (iK % 2 == 0)
+      {
+        dPi -= 1.0 / iD;
+      }
+      else
+      {
+        dPi += 1.0 / iD;
+      }
+      
+    iD = iD + 2;
+    iK = iK + 1;
+    }
+    return dPi * 4;
+  }
+  else
+  return 0;
+}
+
+double diaPi(double dError){
+  
+  //Declaracion de variables 
+  int iD, iK;
+  double dPiAnterior, dPiActual;
+  bool bPar;
+  
+  //Inicializar las variables
+  dPiActual = 0;
+  dPiAnterior = 1;
+  iD = 1;
+  bPar = false;
+  iK = 1;
+    
+    //Ciclo Centinela 
+    while (abs(dPiAnterior - dPiActual) > dError)
+    {
+      //Guardar el ultimo valor de Pi en dPiAnterior
+      dPiAnterior = dPiActual;
+      cout << iK << endl;
+      if (bPar)
+      {
+        dPiActual -= 1.0 / iD;
+      }
+      else
+      {
+        dPiActual += 1.0 / iD;
+      }
+      
+    bPar = !bPar;
+    iD = iD + 2;
+    iK = iK + 1;
+    }
+    return dPiActual * 4;
+  
+}
+
+void dibujaPastel(){
+  //Declaracion de variables
+  int iRenglones, iColumnas;
+  bool bPar;
+  
+  bPar = false;
+  
+  //Leer
+  cout << "De cuantos renglones quieres el pastel: \n";
+  cin >> iRenglones;
+  cout << "De cuantas columnas quieres el pastel: \n";
+  cin >> iColumnas;
+  
+  for(int iR = 1; iR <= iRenglones; iR = iR + 1){
+    
+    for (int iC = 1; iC <= iColumnas; iC = iC + 1, bPar = ! bPar){
+      if (bPar)
+        cout << "⚽️";
+      else
+        cout << "🐯";
+    }
+    cout << "\n";
+  }
+}
+
+void dibujaEscaleras(){
+  //Declaracion de variables
+  int iEscalones;
+  bool bPar;
+  
+  bPar = false;
+  
+  //Leer
+  cout << "De cuantos escalones quieres la escalera: \n";
+  cin >> iEscalones;
+  
+  for(int iR = 1; iR <= iEscalones; iR = iR + 1){
+    
+    for (int iC = 1; iC <= iR; iC = iC + 1, bPar = ! bPar){
+      if (bPar)
+        cout << "⚽️";
+      else
+        cout << "🐯";
+    }
+    cout << "\n";
+  }
+}
+
+void dibujaPino(){
+  //Declaracion de variables
+  int iEspacios, iEsferas;
+  
+  //Leer
+  cout << "De cuantos pisos quieres el pino: \n";
+  cin >> iEsferas;
+  
+  for(int iR = 1; iR <= iEscalones; iR = iR + 1){
+    
+    for (int iC = 1; iC <= iR; iC = iC + 1, bPar = ! bPar){
+        cout << "⚽️";
+    }
+    cout << "\n";
+  }
+}
+
+
+void menu(){
+cout << "	Menú de opciones"<<
+	"\n1. Sumatoria 1 + 2+ 3 +...+ iNs"<<
+	"\n2. Cuenta Positivos Negativos Ceros de iN valoress"<<
+	"\n3. Tabla de Multiplicar del número xs"<<
+	"\n4. Promedio de iN númeross"<<
+	"\n5. Encuentra el Mayor de iN númeross"<<//NO
+	"\n6. Encuentra el Menor de iN númeross"<<//NO
+	"\n7. Sucesión de Fibonaccis"<<
+	"\n8. Adivina el siguiente número de la series"<<
+	"\n9. Encuentra el Menor, el Mayor y el Promedio de iN valoress"<<
+	"\n10. Encuentra el Mayor hasta que teclee 0s"<<
+	"\n11. Encuentra el Menor hasta que teclee 0s"<<
+	"\n12. Encuentra el Promedio hasta que teclee 0s"<<
+	"\n13. Sumatoria Día Pis"<<
+	"\n14. Dibuja Pastel en forma de Rectangulos"<<
+	"\n15. Dibuja Escaleras"<<
+	"\n16. Dibuja Pinos"<<
+	"\n0. Salir"<<
+	"\nTeclea la opcion: ";
+}
+
+int main() {
+  //Declaracion de variables
+  int iN, iOpcion;
+  double dError, dPi;
+  
+  //Desplegar el menu
+  menu();
+  cin >> iOpcion;
+  
+    switch (iOpcion)
+    {
+      case 1: //1. Sumatoria 1 + 2+ 3 +...+ iN
+          cout << "Teclea la cantidad de dias que quieres ahorrar: ";
+          cin >> iN;
+          sumatoria(iN);
+      break;
+      case 2: //2. Cuenta Positivos Negativos Ceros de iN valores
+          cout << "Teclea el numero de valores que deseas procesar: " << endl;
+          cin >> iN;
+          cuentaPNC(iN);
+      break;
+      case 3: //3. Tabla de Multiplicar del numero
+          cout << "Teclea el numero de la tabla que quieres\n";
+          cin >> iN;
+          tablaMultiplicar(iN);
+      break;
+      case 4: //4. Promedio de iN número
+          cout << "Teclea el numero de valores que deseas procesar: \n";
+          cin >> iN;
+          promedio(iN);
+      break;
+      case 5: //5. Encuentra el Mayor de iN números
+          cout << "Teclea el numero de valores que deseas procesar: \n";
+          cin >> iN;
+          mayor(iN);
+      break;
+      case 6: //6. Encuentra el Menor de iN número
+          cout << "Teclea el numero de valores que deseas procesar: \n";
+          cin >> iN;
+          menor(iN);
+      break;
+      case 7:
+      break;
+      case 9: //9. Encuentra el Menor, el Mayor y el Promedio de iN valoress
+          cout << "Teclea el numero de valores que deseas procesar: \n";
+          cin >> iN;
+          menorMayorPromedio(iN);
+      break;
+      case 10: //10. Encuentra el Mayor hasta que teclee 0s
+        mayorCentinela(iN);
+      break;
+      case 11: //11. Encuentra el Menor hasta que teclee 0s
+        menorCentinela(iN);
+      break;
+      case 12: //12. Encuentra el Promedio hasta que teclee 0s
+        promedioCentinela(iN);
+      break;
+      case 13: //13. Sumatoria Día Pis
+          cout << "Teclea la cantidad de valores para aproximar Pi: \n";
+          cin >> iN;
+          dPi = diaPi(iN);
+          if (dPi != 0)
+              cout << "La aproximacion de Pi = " << dPi << endl;
+          else 
+              cout << "Valor inadecuado de valores a aproximar\n";
+          
+          cout << "Teclea el error que quieres de Pi: ";
+          cin >> dError;
+          dPi = diaPi(dError);
+          if (dPi != 0)
+              cout << "La aproximacion de Pi = " << dPi << endl;
+          else 
+              cout << "Valor inadecuado de valores a aproximar\n";
+      break;
+      case 14: //14. Dibuja Pastel en forma de Rectangulos
+        dibujaPastel();
+      break;
+      case 15: //15. Dibuja Escaleras
+        dibujaEscaleras();
+      break;
+      
+      
+    }
+  return 0;
+}
